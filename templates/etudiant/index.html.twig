@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste etudiant{% endblock %}
+
+{% block body %}
+<div class="container"> 
+    <h1>liste etudiant</h1>
+      {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+    <table class="table table-striped">
+        <tr>
+            <th>ADRESSE</th>
+            <th>NOM</th>
+            <th>AGE</th>
+            <th>Action</th>
+        </tr>
+    {% for liste in listes %}
+        <tr>
+            <td>{{liste.adresse }}</td>
+            <td>{{liste.name }}</td>
+            <td>{{ liste.age }}</td>
+            <td><a href="{{path('etudiant_sup', {id: liste.id} ) }}" class="btn btn-danger">delete</a></td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="3">no data fount</td>
+        </tr>
+     {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
