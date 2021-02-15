@@ -3,30 +3,30 @@
 {% block title %}Liste etudiant{% endblock %}
 
 {% block body %}
-<div class="container"> 
-    <h1>Ajout etudiant</h1>
-  
-    {{ form_start(form)}}
+    <div class="container">
+        <h1>Ajout etudiant</h1>
+
+        {{ form_start(form)}}
         <div class="mb-3">
             <label for="nom" class="form-label">Adresse</label>
-                {{form_widget(form.adresse)}}
+            {{form_widget(form.adresse)}}
         </div>
         <div class="mb-3">
             <label for="nom" class="form-label">Nom</label>
-                {{form_widget(form.name)}}
+            {{form_widget(form.name)}}
         </div>
         <div class="mb-3">
             <label for="nom" class="form-label">Age</label>
-                 {{form_widget(form.age)}}
+            {{form_widget(form.age)}}
         </div>
         <div class="mb-3">
             <label for="classe" class="form-label">Classe</label>
             {{form_widget(form.classe)}}
         </div>
-    
-        <button class="btn btn-primary mb-3">save</button>
-    {{ form_end(form)}}
 
-</div>
+        <button class="btn btn-primary mb-3">save</button>
+        {{ form_end(form)}}
+
+    </div>
 
 {% endblock %}

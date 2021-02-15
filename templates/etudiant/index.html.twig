@@ -15,14 +15,17 @@
             <th>ADRESSE</th>
             <th>NOM</th>
             <th>AGE</th>
-            <th>Action</th>
+            <th>CLASSE</th>
+            <th colspan="2">Action</th>
         </tr>
     {% for liste in listes %}
         <tr>
             <td>{{liste.adresse }}</td>
             <td>{{liste.name }}</td>
             <td>{{ liste.age }}</td>
+            <td>{{ liste.classe.libelle }}</td>
             <td><a href="{{path('etudiant_sup', {id: liste.id} ) }}" class="btn btn-danger">delete</a></td>
+            <td><a href="{{path('etudiant_edit', {id: liste.id} ) }}" class="btn btn-warning">Editer</a></td>
         </tr>
     {% else %}
         <tr>

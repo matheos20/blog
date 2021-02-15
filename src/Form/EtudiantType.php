@@ -2,8 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Classe;
 use App\Entity\Etudiant;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -32,6 +35,14 @@ class EtudiantType extends AbstractType
                 'label' => false,
                 'attr' => [
                     'placeholder' => '******',
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('classe',EntityType::class,[
+                'label' => false,
+                'class' => Classe::class,
+                'choice_label' => 'libelle',
+                'attr' => [
                     'class' => 'form-control'
                 ]
             ])

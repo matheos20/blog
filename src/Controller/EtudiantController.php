@@ -39,8 +39,6 @@ class EtudiantController extends AbstractController
      */
     public function ajouter(Request $request): Response
     {
-
-
         $etudiant = new Etudiant();
 
         $form = $this->createForm(EtudiantType::class, $etudiant);
@@ -53,7 +51,7 @@ class EtudiantController extends AbstractController
 
             $this->addFlash('success', 'ajout avec succes');
             return $this->redirectToRoute('etudiant');
-            
+
             
         }
 
@@ -62,4 +60,31 @@ class EtudiantController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/etudiant/edit/{id}", name="etudiant_edit")
+     */
+    public function edit(Request $request,Etudiant $etudiant): Response
+    {
+
+        $form = $this->createForm(EtudiantType::class, $etudiant);
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($etudiant);
+            $em->flush();
+
+            $this->addFlash('success', 'edit avec succes');
+            return $this->redirectToRoute('etudiant');
+
+
+        }
+
+
+        return $this->render('etudiant/edit.html.twig',[
+            'form' => $form->createView()
+        ]);
+    }
+
 }
